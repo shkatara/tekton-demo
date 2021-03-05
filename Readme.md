@@ -3,13 +3,13 @@ Tekton  / OpenShift Pipelines demo.
 There are tons of docs on telling the good things about tekton or OpenShift Pipelines.
 
 
-===  
+===
 Resources needed
-===  
+===
 1. tkn cli
 2. oc cli
-3. connection to an openshift cluster. I have tested this on CRC version 4.6  
-===  
+3. connection to an openshift cluster. I have tested this on CRC version 4.6
+===
 
 
 1. To add OpenShift pipelines, install the OpenSHift Pipeline operator from the operatorhub.

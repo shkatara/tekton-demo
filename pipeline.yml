@@ -30,5 +30,7 @@ spec:
     params:
     - name: route-name
       value: $(params.pl-route-name)
+    - name: svc-name
+      value: $(params.pl-app-name)
     runAfter:
     - deploy-app

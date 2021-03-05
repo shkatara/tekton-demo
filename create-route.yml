@@ -7,10 +7,13 @@ spec:
     - name: route-name
       description: the name of the route 
       type: string
+    - name: svc-name
+      description: the name of the service
+      type: string
   steps:
     - name: create-route
       image: quay.io/openshift/origin-cli:latest
       command: ["/bin/sh", "-c"]
       args:
         - |
-          oc expose svc --name $(inputs.params.route-name) shubham
+          oc expose svc --name $(inputs.params.route-name) $(inputs.params.svc-name)

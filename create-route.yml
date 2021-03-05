@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: create-route
+spec:
+  params:
+    - name: route-name
+      description: the name of the route 
+      type: string
+  steps:
+    - name: create-route
+      image: quay.io/openshift/origin-cli:latest
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          oc expose svc --name $(inputs.params.route-name) shubham

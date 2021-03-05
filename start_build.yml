@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: start-build
+spec:
+  params:
+    - name: app-name
+      description: the name of the template
+      type: string
+    - name: image-name
+      description: name of the image
+      type: string
+  steps:
+    - name: start-build
+      image: quay.io/openshift/origin-cli:latest
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          oc new-app --name $(inputs.params.app-name)  --docker-image=$(inputs.params.image-name)

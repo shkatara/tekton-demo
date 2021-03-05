@@ -1,0 +1,34 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-and-deploy
+spec:
+  params:
+  - name: pl-app-name
+    type: string
+    description: name of the app for pipeline 
+  - name: pl-image-name
+    type: string
+    description: name of the image to deploy 
+  - name: pl-route-name
+    type: string
+    description: name of the route to create
+  tasks:
+  - name: deploy-app
+    taskRef:
+      name: start-build
+      kind: Task
+    params:
+    - name: app-name
+      value: $(params.pl-app-name)
+    - name: image-name
+      value: $(params.pl-image-name)
+  - name: create-route
+    taskRef:
+      name: create-route
+      kind: Task
+    params:
+    - name: route-name
+      value: $(params.pl-route-name)
+    runAfter:
+    - deploy-app
